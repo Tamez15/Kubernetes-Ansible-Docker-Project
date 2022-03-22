@@ -1,30 +1,10 @@
-pipeline {
-  agent any
-  environment {
-      PATH = "/opt/maven/apache-maven-3.8.5/bin:$PATH"
-      }
-  stages {
-    stage('Maven Version') {
-      parallel {
-        stage('Maven Version') {
-          steps {
-            sh 'mvn -v'
-          }
-        }
-
-        stage('Java Version') {
-          steps {
-            sh 'java -version'
-          }
-        }
-
-      }
+node {
+    def mvnHome = tool 'Maven'
+    stage ("checkout")  {
+      checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'git', url: 'https://github.com/Tamez15/Cucumber.git']]])
     }
-
-    stage('Running Test') {
-      steps {
-        sh 'mvn clean test'
-      }
+     stage ('build')  {
+      sh "${mvnHome}/bin/mvn clean install "
     }
-  }
 }
+
