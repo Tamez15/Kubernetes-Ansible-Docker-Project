@@ -9,7 +9,7 @@ node {
     }
     stage ('Code Quality scan') {
        withSonarQubeEnv('sonarqube') {
-       sh "${mvnHome}/bin/mvn webapp/pom.xml sonar:sonar"
+       sh "${mvnHome}/bin/mvn -f webapp/pom.xml sonar:sonar"
         }
    }
 }
