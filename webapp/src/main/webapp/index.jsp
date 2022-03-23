@@ -1,2 +1,2 @@
-<h1> Hello, Welcome to Simple DevOps Project !!   </h1>
-<h2> GCP Ubuntu Instance AMI - CICD PipeLine using GCP<h2>
+<h1> DevOps Project !! </h1>
+<h2> Instance AMI - CICD PipeLine using AWS <h2>
